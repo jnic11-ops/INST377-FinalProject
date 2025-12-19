@@ -12,10 +12,10 @@ async function loadRandActiv() {
 
     container.style.display = "block";
 
-    activName.textContent = `Activty: ${data.activity}`;
-    activType.textContent = `Type: ${data.type}`;
-    activParticipants.textContent = `Participants: ${data.participants}`;
-    activPrice.textContent = `Price: $ ${data.price}`;
-    activDuration.textContent = `Duration: ${data.duration}`;
+    activName.textContent = `Activity: ${data.activity}`;
+    activType.textContent = `: ${data.type}`;
+    activParticipants.textContent = `: ${data.participants}`;
+    activPrice.textContent = `: $ ${data.price}`;
+    activDuration.textContent = `: ${data.duration}`;
 };
 

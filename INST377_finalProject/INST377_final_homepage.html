@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="INST377_final.css">
     </head>
     <body>
-        <!-- Header -->
+        
         <!-- Header -->
         <header class="header"></header>
             <div class="header_inner">
@@ -26,31 +26,63 @@
 
             <nav class="navigation">
                 <a class=" navBtn active" href="INST377_final_homepage.html">Home</a>
-                <a class="navBtn active" href="INST377_final_functionalitypage.html">Terpytime</a>
+                <a class="navBtn active" href="INST377_final_functionalitypage.html">TerpFlow</a>
                 <a class="navBtn active" href="INST377_final_aboutpage.html">About</a>
             </nav>
 
             </div>
             
         </header>
+
+        <main class="page">
+            <section class="hero">
+                <h1>Are you extremely bored?</h1>
+                <p>TerpTime helps you find activities based on your vibe, budget, and friend group.
+                    Use the filter or random activity to pass your time as a terp.
+                </p>
+            </section>
+
+            <!-- The main grid -->
+            <section class="grid">
+                <section class="card">
+                    <h2>Random Activity</h2>
+                    <p>Not sure what to do? Heres a random suggestion!</p>
+
+                    <button class="btn btnPrimary" id="randomActivity" onclick="loadRandActiv()">Random Activity</button>
+                    <br>
+
+                    <div class="divider"></div>
+
+
+                    <div id="randActivDiv" style="display: none;">
+                    <h3 id="activName" style="margin: 0 0 10px; "></h3>
+
+                    <p class="pill" style="margin: 0 0 10px;">
+                    <strong><span>Type</span> </strong><span id="activType"></span> </p>
+                    <p style="margin: 6px 0;"><strong>Participants</strong> <span id="activParticipants"></span></p> 
+                    <p style="margin: 6px 0;"><strong>Price</strong> <span id="activPrice"></span></p> 
+                    <p style="margin: 6px 0;"><strong>Duration</strong> <span id="activDuration"></span></p>
+                </div>
+                </section>
+
+                <section class="card">
+                    <h2>Filter Search</h2>
+                    <p>Search by Type, price, and participants.</p>
+                    <div id="filterActiv"></div>
+                </section>
+            </section>
+
+            <!-- Results area -->
+            <section class="card" style="margin-top: 16px;">
+            <h2>Results</h2>
+        <div id="resultsActiv"></div>
     
-    <div id="randActiv">
-        <h2>Random Activity Button</h2>
-        <button onclick="loadRandActiv()">Get Random Activity</button>
-        <div id="randActivDiv" style="display: none;">
-            <h3 id="activName"></h3>
-            <p id="activType"></p>
-            <p id="activParticipants"></p>
-            <p id="activPrice"></p>
-            <p id="activDuration"></p>
-        </div>
-    </div>
-    <div id="filterActiv">
-        <h2>Filter Activity Search</h2>
-    </div>
-    <div id="resultsActiv">
-        <h2>Search Results</h2>
-    </div>
+    </section>
+
+            
+        </main>
+    
+   
     </body>
 </html>
 
