@@ -3,7 +3,7 @@
         <title>
             TerpTime | Home
         </title>
-        <script src="INST377_final.js"></script>
+        <script src="INST377_final.js" defer></script>
         <script></script>
         <link rel="stylesheet" href="INST377_final.css">
     </head>
@@ -68,8 +68,43 @@
                 <section class="card">
                     <h2>Filter Search</h2>
                     <p>Search by Type, price, and participants.</p>
-                    <div id="filterActiv"></div>
                     <div class="divider"></div>
+
+                    <div id="filterActiv">
+
+                        <label style="font-weight:900; font-size:15px;">Type</label><br/>
+                        <select id="typeFilter" class="btn" style="min-width:200px; margin-bottom: 10px; margin-top: 10px;">
+
+                            <option value="">Any</option>
+                            <option value="education">Education</option>
+                            <option value="social">Social</option>
+                            <option value="diy">DIY</option>
+                            <option value="charity">Charity</option>
+                            <option value="cooking">Cooking</option>
+                            <option value="relaxation">Relaxation</option>
+                            <option value="music">Music</option>
+                        
+                        </select>
+                        <br>
+
+
+                        <label style="font-weight:900; font-size:15px;">Participants</label><br>
+                        <input id="participantsFilter" class="btn" type="number" min="1" value="1" style="width:120px; margin-bottom:10px; margin-top: 10px;"/>
+
+                        <br>
+
+                        <label style="font-weight:900; font-size:15px;">Max Price(0-1)</label><br>
+                        <input id="priceFilter" class="btn" type="number" min="0" max="1" step="0.1" value="1" style="width:120px; margin-bottom:10px; margin-top: 10px;"/>
+                        
+                        <br>
+
+                        <button class="btn btnPrimary " type="button" onclick="loadFilteredActivities()">Search</button>
+
+
+                    
+                        
+                    </div>
+                    
                 </section>
             </section>
 
@@ -77,8 +112,44 @@
             <section class="card" style="margin-top: 16px;">
             <h2>Results</h2>
         <div id="resultsActiv"></div>
-    
+
     </section>
+
+
+
+        <section class="card" style="margin-top:16px">
+            <h2>Movie Recommender</h2>
+            <p>Pick a genre and get a Movie Recommendation</p>
+
+            <div
+            style="display:flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;">
+
+            <label for="movieGenre" style="font-weight:800; font-size: 13px;">Genre</label>
+
+            <select id="movieGenre" class="btn" style="padding: 10px 12 px; min-width: 200px;">
+                <option value="">Loading Genres</option>
+            </select>
+
+            <button class="btn btnPrimary" id="movieBtn" type="button">Recommend</button>
+            
+        
+        </div>
+
+        <div class="divider"></div>
+
+
+        <div id="movieBox" style="display: none">
+            <h3 id="movieTitle" style="margin: 0 0 12px;"></h3>
+
+            <p id="movieMeta"> </p>
+        
+        </div>
+        </section>
+    
+    
 
             
         </main>

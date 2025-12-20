@@ -19,3 +19,40 @@ async function loadRandActiv() {
     activDuration.textContent = `: ${data.duration}`;
 };
 
+// Filter box fetch 
+
+async function loadFilteredActivities(){
+    const type = document.getElementById("typeFilter").value;
+    const participants = document.getElementById("participantsFilter").value;
+    const maxPrice = parseFloat(document.getElementById("priceFilter").value);
+
+    let url = `https://bored-api.appbrewery.com/filter?participants=${participants}`;
+    if (type !== ""){
+        url += `&type=${type}`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const resultsDiv = document.getElementById("resultsActiv");
+        resultsDiv.innerHTML="";
+
+
+        const filtered = data.filter(activity => Number(activity.price) <= maxPrice);
+
+        if (filtered.length === 0) {
+            resultsDiv.textContent = "No results found.";
+         return;
+        }
+
+        filtered.slice(0, 10).forEach(activity => {
+        const p = document.createElement("p");
+        p.textContent = activity.activity;
+        resultsDiv.appendChild(p);
+        });
+    }
+
+
+
+}
+
+
