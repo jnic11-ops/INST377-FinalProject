@@ -1,0 +1,19 @@
+{
+  "name": "inst377-finalproject-main-2",
+  "version": "1.0.0",
+  "description": "By Jacob Nicholson & Isai Amaya-Diaz",
+  "license": "ISC",
+  "author": "jacob nicholson",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "dependencies": {
+    "@supabase/supabase-js": "^2.89.0",
+    "body-parser": "^2.2.1",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
