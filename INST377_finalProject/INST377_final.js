@@ -56,3 +56,26 @@ async function loadFilteredActivities(){
 }
 
 
+// Movie box fetch call 
+
+async function loadGenres(){
+
+    const genreSelect = document.getElementById("movieGenre");
+    if(!genreSelect) return;
+
+    const genres = ["action", "animation", "comedy", "drama", "horror", "family", "mystery"];
+
+    genreSelect.innerHTML `<option value="">Select a genre</option>`;
+    genres.forEach(g => {
+        const option = document.createElement("option");
+        option.value = g;
+
+        option.textContent = g.charAt(0).toUpperCase() + g.slice(1);
+        genreSelect.appendChild(option);
+    });
+}
+
+
+
+
+
