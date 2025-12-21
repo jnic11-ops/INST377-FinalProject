@@ -90,6 +90,8 @@ async function loadFilteredActivities(){
     }
 }
 
+// Saved function functionality page
+
 function renderSaved() {
     const savedList = document.getElementById("savedList");
     if (!savedList) return;

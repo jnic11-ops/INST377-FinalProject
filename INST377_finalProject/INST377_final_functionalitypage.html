@@ -1,10 +1,12 @@
 <html>
     <head>
         <title>
-            INST377 Final Project Functionality Page
+            TerpTime | TerpFlow
         </title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <script src="INST377_final.js" defer></script>
-        <script></script>
+       
         <link rel="stylesheet" href="INST377_final.css">
     </head>
     <body>
@@ -31,6 +33,7 @@
         </div>
        
    </header>
+
         <main class="page">
             <section class="grid">
                 <section class="hero">
@@ -44,7 +47,19 @@
             <section class="grid">
                 <section class="card">
                     <div id="savedList">
-                        <h4></h4>
+                        <section class="card">
+                            <div id="savedList">
+                                <h4></h4>
+
+
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <h3 style="margin: 0 0 10px;">Saved by Type</h3>
+                            <canvas id="savedTypeChart" style="width:100%; max-height:260px;"></canvas>
+                        </section>
+                        
                     </div>
                 </section>
                 <section class="card">
