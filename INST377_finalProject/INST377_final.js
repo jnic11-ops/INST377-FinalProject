@@ -119,6 +119,9 @@ window.onload = () => {
 
 // Movie box fetch call 
 
+// Using the sample movies api 
+
+// genre box output
 async function loadGenres(){
 
     const genreSelect = document.getElementById("movieGenre");
@@ -126,7 +129,7 @@ async function loadGenres(){
 
     const genres = ["action", "animation", "comedy", "drama", "horror", "family", "mystery"];
 
-    genreSelect.innerHTML `<option value="">Select a genre</option>`;
+    genreSelect.innerHTML =  `<option value="">Select a genre</option>`;
     genres.forEach(g => {
         const option = document.createElement("option");
         option.value = g;
@@ -136,7 +139,49 @@ async function loadGenres(){
     });
 }
 
+async function recommendMovie(){
+    const genre = document.getElementById("movieGenre").value;
+    const movieBox = document.getElementById("movieBox");
+    const movieTitle = document.getElementById("movieTitle");
+    const movieMeta = document.getElementById("movieMeta");
+
+    if (genre === ""){
+        alert("Please select a genre first.");
+        return;
+    }
+
+    movieBox.style.display = "block";
+    movieTitle.textContent = "Loading..";
+    movieMeta.textContent = "";
+
+    try{
+
+        const response = await fetch(`https://api.sampleapis.com/movies/${genre}`);
+        const data = await response.json();
+
+        if(!Array.isArray(data) || data.length === 0){
+
+            movieTitle.textContent = "No movies found for this genre.";
+            return;
+        }
+
+        const randomMovie = data[Math.floor(Math.random() * data.length)];
+
+        movieTitle.textContent = randomMovie.title ?? "Movie Pick";
+        movieMeta.textContent = `Year: ${randomMovie.year ?? "N/A"} | Rating: ${randomMovie.imdbRating ?? randomMovie.rating ?? "N/A"}`;
+    } catch (error) {
+        console.error(error);
+        movieTitle.textContent = "Error loading movie recommendation.";
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    loadGenres();
+
+    const movieBtn = document.getElementById("movieBtn");
+    if (movieBtn) {
+        movieBtn.addEventListener("click", recommendMovie);
 
 
-
+    }
+});
 
