@@ -100,6 +100,8 @@ function renderSaved() {
     savedList.innerHTML = saved.length
         ? saved.map(a => `<p>${a.activity}</p>`).join("")
         : "<p>No Activities Saved</p>";
+
+        renderSavedTypeChart();
 }
 
 function renderRecent() {
@@ -112,10 +114,63 @@ function renderRecent() {
         : "<p>No Recent Activities</p>";
 }
 
+// Saved function for the chart
+
+let savedTypeChart = null;
+
+function renderSavedTypeChart(){
+    const canvas = document.getElementById("savedTypeChart");
+    if(!canvas) return;
+
+    const saved = getList("savedActivities");
+    const counts = {};
+    saved.forEach(a => {
+        const too = (a.type || "unknown").toLowerCase();
+        counts[too] = (counts[too] || 0) + 1;
+    });
+    const labels = Object.keys(counts);
+    const values = Object.values(counts);
+
+    if(labels.length === 0){
+        if(savedTypeChart) savedTypeChart.destroy();
+        savedTypeChart = null;
+        return;
+    }
+
+    savedTypeChart = new Chart(canvas, {
+        type: "bar",
+        data:{
+            labels,
+            datasets: [{
+                label: "Saved Activities",
+                data: values,
+                backgroundColor: "#E21833",
+                borderRadius: 6
+            }]
+        },
+
+
+
+        options: {
+            responsive: true,
+            plugins:{
+                legend:{
+                    display:false
+                },
+            },
+                scales:{
+                    y: {beginAtZero: true, ticks: {precision: 0}}
+                }
+            
+        }
+    });
+}
+
 window.onload = () => {
   if (document.getElementById("savedList")) {
     renderSaved();
     renderRecent();
+    renderSavedTypeChart();
   }
 };
 
