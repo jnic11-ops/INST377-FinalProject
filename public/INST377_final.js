@@ -14,15 +14,46 @@ function addRecent(activity) {
   renderRecent();
 }
 
+async function loadSavedActiv() {
+    const savedList = document.getElementById("savedList");
+    if (!savedList) return;
+
+    const response = await fetch("/api/savedActivities");
+    const data = await response.json();
+
+    if(!response.ok) {
+        savedList.innerHTML = `<p>Error loading saved activities.</p>`;
+        return;
+    }
+    renderSaved(data);
+}
+
 function handleSaveClick() {
   if (!currentActivity) return;
 
-  const saved = getList("savedActivities");
-  if (!saved.some(a => a.key === currentActivity.key)) {
-    saved.unshift(currentActivity);
-    setList("savedActivities", saved);
+  const data = {
+    activity_key: currentActivity.key,
+    activity: currentActivity.activity,
+    type: currentActivity.type,
+    participants: currentActivity.participants,
+    price: currentActivity.price,
+    duration: currentActivity.duration
+  };
+
+  const response = await fetch("/api/savedActivity", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    alert(`Save failed.`);
+    return;
   }
-  renderSaved();
+
+  await loadSavedActiv();
 }
 
 async function loadRandActiv() {
@@ -168,7 +199,7 @@ function renderSavedTypeChart(){
 
 window.onload = () => {
   if (document.getElementById("savedList")) {
-    renderSaved();
+    loadSavedActiv();
     renderRecent();
     renderSavedTypeChart();
   }
@@ -241,4 +272,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
+
 
