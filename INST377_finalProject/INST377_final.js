@@ -95,7 +95,7 @@ function renderSaved() {
     if (!savedList) return;
 
     const saved = getList("savedActivities");
-    savedList.innerHTML = saved/length
+    savedList.innerHTML = saved.length
         ? saved.map(a => `<p>${a.activity}</p>`).join("")
         : "<p>No Activities Saved</p>";
 }
@@ -107,7 +107,7 @@ function renderRecent() {
     const recent = getList("recentActivities");
     recentList.innerHTML = recent.length
         ? recent.map(a => `<p>${a.activity}</p>`).join("")
-        : "<p>No Recent Activities</p>"
+        : "<p>No Recent Activities</p>";
 }
 
 window.onload = () => {
@@ -116,3 +116,4 @@ window.onload = () => {
     renderRecent();
   }
 };
+
