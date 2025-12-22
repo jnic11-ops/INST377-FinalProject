@@ -28,7 +28,7 @@ async function loadSavedActiv() {
     renderSaved(data);
 }
 
-function handleSaveClick() {
+async function handleSaveClick() {
   if (!currentActivity) return;
 
   const data = {
@@ -270,6 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
+
 
 
 
