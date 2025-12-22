@@ -32,6 +32,23 @@ async function loadSavedActiv() {
 async function handleSaveClick() {
   if (!currentActivity) return;
 
+  Toastify({
+      text: "Saved to TerpFlow!!",
+      duration: 3000,
+      gravity: "top",
+      position:"center",
+      style:{
+          background:"#DC143C",
+          color:"#fff",
+          borderRadius:"950px",
+          letterSpacing:"1px", 
+          fontWeight:"750",
+          padding:"10px 20px", 
+          textAlign: "center",
+          fontSize:"20px"
+        }
+    }).showToast();
+
   const data = {
     activity_key: currentActivity.key,
     activity: currentActivity.activity,
