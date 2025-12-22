@@ -112,10 +112,37 @@ async function loadFilteredActivities(){
          return;
         }
     
-        filtered.slice(0, 10).forEach(activity => {
-            const p = document.createElement("p");
-            p.textContent = activity.activity;
-            resultsDiv.appendChild(p);
+                filtered.slice(0, 10).forEach(activity => {
+          const row = document.createElement("div");
+          row.style.display = "flex";
+          row.style.justifyContent = "space-between";
+          row.style.alignItems = "center";
+          row.style.gap = "10px";
+          row.style.padding = "6px 0";
+
+          const label = document.createElement("span");
+          label.textContent = activity.activity;
+
+          const btn = document.createElement("button");
+          btn.className = "btn btnPrimary";
+          btn.textContent = "Save";
+          btn.type = "button";
+          btn.addEventListener("click", () => {
+            currentActivity = {
+              key: activity.key,
+              activity: activity.activity,
+              type: activity.type,
+              participants: activity.participants,
+              price: activity.price,
+              duration: activity.duration
+            };
+            handleSaveClick();
+            addRecent(currentActivity);
+          });
+
+          row.appendChild(label);
+          row.appendChild(btn);
+          resultsDiv.appendChild(row);
         });
     }
 }
@@ -271,6 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
+
 
 
 
