@@ -46,9 +46,13 @@ function handleSaveClick() {
     body: JSON.stringify(data)
   });
 
-  const result = await response.json();
+  const contentType = response.headers.get("content-type") || "";
+  const result = contentType.includes("application/json")
+    ? await response.json()
+    : null;
 
   if (!response.ok) {
+    console.log("Save failed.", result)
     alert(`Save failed.`);
     return;
   }
@@ -272,5 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
+
 
 
