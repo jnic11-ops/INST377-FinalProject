@@ -25,7 +25,8 @@ async function loadSavedActiv() {
         savedList.innerHTML = `<p>Error loading saved activities.</p>`;
         return;
     }
-    renderSaved(data);
+    setList("savedActivities", Array.isArray(data) ? data : []);
+    renderSaved();
 }
 
 async function handleSaveClick() {
@@ -270,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
+
 
 
 
