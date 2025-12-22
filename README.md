@@ -1,6 +1,9 @@
 # INST377-FinalProject
 By Jacob Nicholson & Isai Amaya-Diaz
 
+# Link to our site!
+## https://inst-377-final-project-amber.vercel.app/INST377_final_homepage.html
+
 ## Description of your project:
 The UMD Activity Finder helps students find activities based on their mood, time, group size, and personal preferences. This application will bring students together, promote engagement on campus, and help students discover the endless possibilities to overcome boredom.
 
